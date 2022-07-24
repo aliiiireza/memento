@@ -1,5 +1,5 @@
 {
-  "name": "memento-project",
+  "name": "memento",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -10,6 +10,7 @@
     "lerna": "^5.2.0"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ]
 }
