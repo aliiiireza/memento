@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@types/yup": "^0.29.14",
+    "yup": "^0.32.11"
+  }
 }
