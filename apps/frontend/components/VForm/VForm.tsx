@@ -6,7 +6,6 @@ import {
   VFormProps,
   ErrorsInterface,
   FormInterface,
-  FieldInterface,
   extractRulesFromFields,
   extractErrorsFromYup,
 } from "./index";
@@ -17,7 +16,7 @@ export const VForm = ({ schema, onSubmit, values = {} }: VFormProps) => {
   const [loading, setLoading] = useState(false as boolean);
 
   let yupSchema: ObjectSchema<FormInterface> = object().shape(
-    extractRulesFromFields(schema.fields)
+    schema.rules || extractRulesFromFields(schema.fields)
   );
 
   const onFieldChange = (key: string, value: any) => {

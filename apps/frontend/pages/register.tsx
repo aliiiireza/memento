@@ -7,20 +7,19 @@ import {
   OnFormSubmit,
 } from "components/VForm";
 import axios from "lib/axios";
-
+import { rules } from "@memento/validator";
 const schema: SchemaInterface = {
+  rules: rules.auth.register,
   fields: [
     {
       name: "email",
       title: "Email",
       type: FieldTypes.Text,
-      rules: yup.string().required().email(),
     },
     {
       name: "password",
       title: "Password",
       type: FieldTypes.Text,
-      rules: yup.string().required().min(8, "Your password is too short."),
       attributes: {
         type: "password",
       },
@@ -29,10 +28,6 @@ const schema: SchemaInterface = {
       name: "password_confirmation",
       title: "Password Confirmation",
       type: FieldTypes.Text,
-      rules: yup
-        .string()
-        .required()
-        .oneOf([yup.ref("password")], "Your passwords do not match."),
       attributes: {
         type: "password",
       },

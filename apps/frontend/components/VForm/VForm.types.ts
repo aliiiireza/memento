@@ -1,5 +1,6 @@
 import React from "react";
 
+import { ObjectSchema } from "yup";
 export interface VFormProps {
   schema: SchemaInterface;
   values?: FormInterface;
@@ -16,6 +17,7 @@ export type OnFormSubmit = (form: FormInterface) => void;
 
 export interface SchemaInterface {
   fields: Array<FieldInterface>;
+  rules?: FormInterface;
 }
 
 export interface FieldInterface {

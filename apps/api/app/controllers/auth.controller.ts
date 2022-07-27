@@ -4,15 +4,18 @@ import bcrypt from "bcryptjs";
 import config from "../config/auth.config";
 import { User, Role } from "../models";
 import { UserInput } from "../models/user.model";
-import * as validations from "../validations";
+import { validate, rules, ValidateInterface } from "@memento/validator";
 
 export const register = async (req: Request, res: Response) => {
-  const isValid: boolean = await validations.validate(
-    validations.register,
-    req,
-    res
+  const { isValid, errors }: ValidateInterface = await validate(
+    rules.auth.register,
+    req.body
   );
-  if (!isValid) return;
+
+  if (!isValid)
+    return res
+      .status(400)
+      .json({ status: false, message: "Validation failed!", errors });
 
   try {
     const { email, password, roles } = req.body;
